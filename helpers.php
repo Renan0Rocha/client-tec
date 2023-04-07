@@ -41,6 +41,9 @@ function filtrarString($string): string
     // Remove caracteres especiais da string e converte caracteres acentuados para não acentuados
     $string = preg_replace('/[^a-zA-Z0-9\s]/', '', $string);
 
+    // Adiciona um único traço entre as palavras
+    $string = preg_replace('/\s+/', '-', $string);
+
     // Converte caracteres especiais para UTF-8
     $string = htmlentities($string, ENT_QUOTES, "UTF-8");
 
@@ -56,6 +59,7 @@ function filtrarString($string): string
 
     return $string;
 }
+
 
 /* FUNÇÃO COM ERROS DE CONVERÇÃO UTF-8
 function slug(string $string): string
