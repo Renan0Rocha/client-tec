@@ -23,6 +23,46 @@ function filter_input_fix ($type, $variable_name, $filter = FILTER_DEFAULT)
 }
 */
 
+function filtrarString($string): string {
+    // Remove espaços em branco no início e no final da string
+    $string = trim($string);
+    
+    // Remove caracteres especiais da string e converte caracteres acentuados para não acentuados
+    $string = preg_replace('/[^a-zA-Z0-9\s]/', '', $string);
+    $string = preg_replace('/[áàãâä]/u', 'a', $string);
+    $string = preg_replace('/[éèêë]/u', 'e', $string);
+    $string = preg_replace('/[íìîï]/u', 'i', $string);
+    $string = preg_replace('/[óòõôö]/u', 'o', $string);
+    $string = preg_replace('/[úùûü]/u', 'u', $string);
+    $string = preg_replace('/[ç]/u', 'c', $string);
+
+    // Converte caracteres especiais para UTF-8
+    $string = htmlentities($string, ENT_QUOTES, "UTF-8");
+    
+    // Remove tags HTML e PHP da string
+    $string = strip_tags($string);
+    
+    // Translitera a string para remover caracteres acentuados
+    $transliterator = Transliterator::create('NFD; [:Nonspacing Mark:] Remove; NFC;');
+    $string = $transliterator->transliterate($string);
+    
+    // Converte a string de volta para o formato original sem os caracteres especiais
+    $string = preg_replace('/&([a-zA-Z])(\'uml|acute|grave|circ|tilde);/', '$1', $string);
+    
+    return $string;
+}
+
+
+function slug(string $string): string{
+    $mapa['a'] = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúû
+    @#$*()_-+={[}]/?¨|;:.,\\\'<>|º°ª';
+
+    $mapa['b'] = 'aaaaaaaceeeeiiiidnoooooouuuuuybsaaaaaaaceeeeiiiidnoooooouuu';
+
+    $slug = strtr(mb_convert_encoding($string, 'ISO-8859-1', 'UTF-8'), mb_convert_encoding($mapa['a'], 'ISO-8859-1', 'UTF-8'), $mapa['b']);
+    return mb_convert_encoding($slug, 'ISO-8859-1', 'UTF-8');
+}
+
 function dataAtual(): string
 {
     $diaMes = date('d');
