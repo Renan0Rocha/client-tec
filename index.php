@@ -7,24 +7,14 @@
 require_once "system/config.php";
 include_once "helpers.php";
 
-$texto = 'texto para resumir';
+echo filtrarString("Adão \"Negro\" - '2022' "). '<hr>';
+echo filtrarString("Avatar 2: O Caminho da Água"). '<hr>';
+echo filtrarString("Não! Não Olhe!"). '<hr>';
+echo filtrarString("Sonic 2 - O Filme"). '<hr>';
+echo filtrarString("NOVA SÉRIE NO DISNEY+!"). '<hr>';
+echo filtrarString("100 Melhores Filmes"). '<hr>';
+echo filtrarString("teste!@###$%6¨%%¨,*.:/?\|,"). '<hr>';
 
-//echo $total = mb_strlen(str_replace(' ', '', $texto));
-
-echo $total = mb_strlen(trim($texto));
 echo '<hr>';
+echo filtrarString("EU QUERO UMA PÍCÃNHÃ!");
 
-/*
-$string = 'texto';
-$int = 10;
-$float = 10.999;
-$bool = true;
-$nulo = null;
-
-var_dump($texto);
-echo '<hr>';
-echo saudacao();
-echo "<hr>";
-echo resumirTexto($texto, 100, 'contiue');
-echo "<hr>";
-*/
