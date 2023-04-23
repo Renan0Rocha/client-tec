@@ -18,3 +18,4 @@ echo filtrarString("teste!@###$%6¨%%¨,*.:/?\|,"). '<hr>';
 echo '<hr>';
 echo filtrarString("EU QUERO UMA PÍCÃNHÃ!");
 
+
