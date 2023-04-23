@@ -23,6 +23,34 @@ function filter_input_fix ($type, $variable_name, $filter = FILTER_DEFAULT)
 }
 */
 
+<<<<<<< HEAD
+function filtrarString($string): string {
+    // Remove espaços em branco no início e no final da string
+    $string = trim($string);
+    
+    // Remove caracteres especiais da string e converte caracteres acentuados para não acentuados
+    $string = preg_replace('/[^a-zA-Z0-9\s]/', '', $string);
+    $string = preg_replace('/[áàãâä]/u', 'a', $string);
+    $string = preg_replace('/[éèêë]/u', 'e', $string);
+    $string = preg_replace('/[íìîï]/u', 'i', $string);
+    $string = preg_replace('/[óòõôö]/u', 'o', $string);
+    $string = preg_replace('/[úùûü]/u', 'u', $string);
+    $string = preg_replace('/[ç]/u', 'c', $string);
+
+    // Converte caracteres especiais para UTF-8
+    $string = htmlentities($string, ENT_QUOTES, "UTF-8");
+    
+    // Remove tags HTML e PHP da string
+    $string = strip_tags($string);
+    
+    // Translitera a string para remover caracteres acentuados
+    $transliterator = Transliterator::create('NFD; [:Nonspacing Mark:] Remove; NFC;');
+    $string = $transliterator->transliterate($string);
+    
+    // Converte a string de volta para o formato original sem os caracteres especiais
+    $string = preg_replace('/&([a-zA-Z])(\'uml|acute|grave|circ|tilde);/', '$1', $string);
+    
+=======
 function filtrarString($string): string
 {
     // Remove espaços em branco no início e no final da string
@@ -57,13 +85,18 @@ function filtrarString($string): string
     // Converte a string de volta para o formato original sem os caracteres especiais
     $string = preg_replace('/&([a-zA-Z])(\'uml|acute|grave|circ|tilde);/', '$1', $string);
 
+>>>>>>> 602121f321cb971776a97fe39b40fec9c0339aa6
     return $string;
 }
 
 
+<<<<<<< HEAD
+function slug(string $string): string{
+=======
 /* FUNÇÃO COM ERROS DE CONVERÇÃO UTF-8
 function slug(string $string): string
 {
+>>>>>>> 602121f321cb971776a97fe39b40fec9c0339aa6
     $mapa['a'] = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúû
     @#$*()_-+={[}]/?¨|;:.,\\\'<>|º°ª';
 
@@ -72,7 +105,11 @@ function slug(string $string): string
     $slug = strtr(mb_convert_encoding($string, 'ISO-8859-1', 'UTF-8'), mb_convert_encoding($mapa['a'], 'ISO-8859-1', 'UTF-8'), $mapa['b']);
     return mb_convert_encoding($slug, 'ISO-8859-1', 'UTF-8');
 }
+<<<<<<< HEAD
+
+=======
 */
+>>>>>>> 602121f321cb971776a97fe39b40fec9c0339aa6
 function dataAtual(): string
 {
     $diaMes = date('d');
@@ -80,6 +117,15 @@ function dataAtual(): string
     $mes = date('n') - 1;
     $ano = date('y');
 
+<<<<<<< HEAD
+    $dayWeek = ['Domingo', 'Segunda-Feira', 'Terça-Feira',
+    'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
+
+    $mounths = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+    $dataFormatada = $dayWeek[$diaSemana]. ", ". $diaMes. " de ". $mounths[$mes]. " de ". $ano;
+=======
     $dayWeek = [
         'Domingo', 'Segunda-Feira', 'Terça-Feira',
         'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'
@@ -91,6 +137,7 @@ function dataAtual(): string
     ];
 
     $dataFormatada = $dayWeek[$diaSemana] . ", " . $diaMes . " de " . $mounths[$mes] . " de " . $ano;
+>>>>>>> 602121f321cb971776a97fe39b40fec9c0339aa6
 
     return $dataFormatada;
 }
@@ -102,8 +149,12 @@ function dataAtual(): string
  * @return string url completa
  */
 
+<<<<<<< HEAD
+function url(string $url): string{
+=======
 function url(string $url): string
 {
+>>>>>>> 602121f321cb971776a97fe39b40fec9c0339aa6
 
     if (filter_has_var(INPUT_SERVER, "SERVER_NAME")) {
         $servername = filter_input(
@@ -124,6 +175,15 @@ function url(string $url): string
     }
     $ambiente = ($servername == "localhost" ? URL_DESENVOLVIMENTO : URL_PRODUCAO);
 
+<<<<<<< HEAD
+    if(str_starts_with($url, '/')){
+        return $ambiente.$url;
+    }
+    return $ambiente.'/'.$url;
+}
+
+function localhost():bool
+=======
     if (str_starts_with($url, '/')) {
         return $ambiente . $url;
     }
@@ -131,6 +191,7 @@ function url(string $url): string
 }
 
 function localhost(): bool
+>>>>>>> 602121f321cb971776a97fe39b40fec9c0339aa6
 {
     if (filter_has_var(INPUT_SERVER, "SERVER_NAME")) {
         $servername = filter_input(
@@ -150,7 +211,11 @@ function localhost(): bool
             $servername = null;
     }
 
+<<<<<<< HEAD
+    if($servername == 'localhost'){
+=======
     if ($servername == 'localhost') {
+>>>>>>> 602121f321cb971776a97fe39b40fec9c0339aa6
         return true;
     }
     return false;
