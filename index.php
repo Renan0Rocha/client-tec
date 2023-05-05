@@ -1,3 +1,5 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <?php
 //Arquivo index responsável pela inicialização do sistema
 
@@ -6,16 +8,11 @@
 
 require_once "system/config.php";
 include_once "helpers.php";
+include './system/nucleo/mensagem.php';
 
-echo filtrarString("Adão \"Negro\" - '2022' "). '<hr>';
-echo filtrarString("Avatar 2: O Caminho da Água"). '<hr>';
-echo filtrarString("Não! Não Olhe!"). '<hr>';
-echo filtrarString("Sonic 2 - O Filme"). '<hr>';
-echo filtrarString("NOVA SÉRIE NO DISNEY+!"). '<hr>';
-echo filtrarString("100 Melhores Filmes"). '<hr>';
-echo filtrarString("teste!@###$%6¨%%¨,*.:/?\|,"). '<hr>';
+echo (new Mensagem())->alerta('texto de alerta');
 
-echo '<hr>';
-echo filtrarString("EU QUERO UMA PÍCÃNHÃ!");
-
-
+//$msg = new Mensagem();
+//echo $msg->sucesso ("Mensagem de sucesso")->renderizar();
+//echo (new Mensagem())->erro("Mensagem de erro")->renderizar();
+//echo '<hr>';
