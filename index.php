@@ -7,12 +7,14 @@
 //declare(strict_types = 1);
 
 require_once "system/config.php";
-include_once "helpers.php";
+include_once "./system/nucleo/helpers.php";
 include './system/nucleo/mensagem.php';
+include './system/nucleo/controlador.php';
 
-echo (new Mensagem())->alerta('texto de alerta');
+use system\nucleo\Controlador;
 
-//$msg = new Mensagem();
-//echo $msg->sucesso ("Mensagem de sucesso")->renderizar();
-//echo (new Mensagem())->erro("Mensagem de erro")->renderizar();
-//echo '<hr>';
+$controlador = new Controlador();
+echo '<hr>';
+var_dump($controlador);
+
+

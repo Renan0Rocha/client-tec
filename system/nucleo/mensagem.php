@@ -1,7 +1,11 @@
 <?php
 
+namespace system\nucleo;
+
 /**
+ * Classe Mensagem - responsável por exibir as mensagens do sistema
  * @author Renan Rocha <ceo@unset.com.br>
+ * @copyright Copyright (c) 2023, Unser
  */
 
 class Mensagem{
