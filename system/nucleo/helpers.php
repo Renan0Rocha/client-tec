@@ -290,7 +290,7 @@ public static public static function slug(string $string): string
     }
     public static function saudacao()
     {
-        echo $hora = date("H");
+        $hora = date("H");
         $saudacao = '';
 
         if ($hora >= 0 and $hora <= 5) {

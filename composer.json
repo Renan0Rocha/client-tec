@@ -1,0 +1,25 @@
+{
+    "name": "ceounset/client-tec",
+    "description": "Curso de PHP 8",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "system\\": "system/"
+        },
+        "files": [
+            "system/config.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Renan da Rocha",
+            "email": "naderman@naderman.de",
+            "homepage": "https://www.naderman.de",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0"
+    }
+}

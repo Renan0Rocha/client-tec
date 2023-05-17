@@ -2,19 +2,11 @@
 
 <?php
 //Arquivo index responsável pela inicialização do sistema
-
+require 'vendor/autoload.php';
 //Impede a conersão das váriaveis declaradas para outro tipo de dado
 //declare(strict_types = 1);
 
-require_once "system/config.php";
-include_once "./system/nucleo/helpers.php";
-include './system/nucleo/mensagem.php';
-include './system/nucleo/controlador.php';
 
-use system\nucleo\Controlador;
-
-$controlador = new Controlador();
-echo '<hr>';
-var_dump($controlador);
+echo"ss";
 
 
