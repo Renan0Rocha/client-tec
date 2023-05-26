@@ -6,7 +6,6 @@ require 'vendor/autoload.php';
 //Impede a conersão das váriaveis declaradas para outro tipo de dado
 //declare(strict_types = 1);
 
-
-echo"ss";
+require 'rotas.php';
 
 
